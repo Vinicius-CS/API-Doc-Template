@@ -68,7 +68,7 @@
 ```
 
 ### Versionamento
-Para alterar a versão, recomendo a utilização no formato `MAJOR.MINOR.PATCH`, onde:
+Para alterar a versão, recomenda-se a utilização no formato `MAJOR.MINOR.PATCH`, onde:
 
 - **MAJOR (Versão Principal)**
   - Mudanças *incompatíveis com versões anteriores*.
