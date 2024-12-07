@@ -4,7 +4,7 @@
 
 ### Versão atual: 1.0.0
 
-- Este template é personalizável através do uso de um arquivo de definição xml (api-definition.xml).
+- Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
 	<br><br>Estrutura/exemplo do arquivo xml:
 
 ```xml
@@ -47,9 +47,9 @@
 </APIDefinition>
 ```
 
-- O projeto utiliza **tags**; essas tags vêm da seção **&lt;APIDefinition&gt;** do arquivo xml e são substituídas pelo texto nos arquivos html pós-gerados;
+- O projeto utiliza **tags**; essas tags vêm da seção `<APIDefinition>` do arquivo xml e são substituídas pelo texto nos arquivos html pós-gerados;
 - O `conteúdo` é colocado em um subdiretório `content` referenciado no arquivo xml.
-- O projeto é dividido em 4 partes: index.php (principal), header.php, start-1.php, end-1.php; o contexto é colocado entre start-1 e end-1;
+- O projeto é dividido em 4 partes: `index.php` (principal), `header.php`, `start-1.php`, `end-1.php`; o contexto é colocado entre start-1 e end-1;
 	cada uma das partes pode conter as tags.
 
 ## Informações Adicionais
