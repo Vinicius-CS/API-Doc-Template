@@ -1,6 +1,6 @@
 # Template de documentação de API
 
-## Um template HTML simples, moderno e totalmente personalizável com tags para a documentação de suas APIs.
+## Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.
 
 ### Versão atual: 1.0.0
 
