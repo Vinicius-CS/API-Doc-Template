@@ -76,7 +76,7 @@ Para alterar a versão, recomenda-se a utilização no formato `MAJOR.MINOR.PATC
   - **Exemplo:** Ao atualizar de *1.0.0* para *2.0.0*, exige ajustes nos sistemas que utilizam a API.
 
 - **MINOR (Versão Menor)**
-  - Adiciona *novas recursos* de maneira *compatível com versões anteriores*.
+  - Adiciona *novos recursos* de maneira *compatível com versões anteriores*.
   - Ganha novas funcionalidades, mas os recursos existentes não mudam de forma que quebre a compatibilidade.
   - **Exemplo:** Atualizar de *1.1.0* para *1.2.0* indica novos recursos sem afetar o funcionamento já existente.
 
