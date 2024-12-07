@@ -128,13 +128,12 @@ function addCopyButton() {
 }
 
 function addCopyClick() {
-	document.querySelectorAll('.content code:not(.hljs,.notcopy)').forEach(function (codeElement) {
+	document.querySelectorAll('.content code:not(.hljs,.notcopy)').forEach(codeElement => {
 		codeElement.style.cursor = 'pointer';
 
 		const tooltip = document.createElement('span');
 		tooltip.className = 'tooltip';
 		tooltip.textContent = 'Copied';
-		tooltip.style.position = 'absolute';
 		document.body.appendChild(tooltip);
 
 		codeElement.addEventListener('click', function () {
@@ -168,7 +167,6 @@ function copyLink(source) {
 		const tooltip = document.createElement('span');
 		tooltip.className = 'tooltip';
 		tooltip.textContent = 'Copied';
-		tooltip.style.position = 'absolute';
 		document.body.appendChild(tooltip);
 
 		const iconElement = document.querySelector(`img[onclick="copyLink('${source}')"]`);
@@ -190,7 +188,7 @@ function copyLink(source) {
 			const titleElement = iconElement.closest('h1');
 			const isCursorOverTitle = titleElement.matches(':hover');
 			if (!isCursorOverTitle) {
-				iconElement.style.display = 'none';
+				iconElement.style.visibility = 'hidden';
 			}
 		}, 2000);
 	});
@@ -199,12 +197,12 @@ function copyLink(source) {
 function addHoverCopyLink() {
 	document.querySelectorAll('.content-section h1').forEach(element => {
 		element.addEventListener('mouseover', function () {
-			element.querySelector('.link-icon').style.display = 'inline';
+			element.querySelector('.link-icon').style.visibility = 'visible';
 		});
 
 		element.addEventListener('mouseleave', function () {
 			if (copyLinkTimeout) {
-				element.querySelector('.link-icon').style.display = 'none';
+				element.querySelector('.link-icon').style.visibility = 'hidden';
 			}
 		});
 	});
@@ -240,7 +238,12 @@ window.onchange = () =>
 {
 	calculElements();
 	addCopyClick();
+	addCopyButton();
 	addHoverCopyLink();
+
+	document.querySelectorAll('.link-icon, .tooltip').forEach(element => {
+		element.style.visibility = 'hidden';
+	});
 }
 window.addEventListener("resize", debounce(function (e)
 {
