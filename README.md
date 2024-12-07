@@ -1,9 +1,10 @@
 <div align='center'>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Documentation-Template/blob/main/images/logo.svg" alt="Template de Documentação para APIs" /></a>
-	<p style="font-weight: 500; font-size: 36px; margin: 0">Template de Documentação para APIs</p>
-	<p style="font-weight: 500; font-size: 16px; margin: 0;">1.0.0</p>
-	<p style="font-weight: 500; font-size: 16px">Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.</p>
+	<h1>Template de Documentação para APIs - Versão 1.0.0</h1>
+	<h3>Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.</h3>
 </div>
+
+<br>
 
 <div align='center'>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/HTML-034c8f?style=flat&logo=html5&logoColor=ffffff" alt="HTML5" /></a>
