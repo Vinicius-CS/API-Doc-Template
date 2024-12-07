@@ -16,7 +16,7 @@
 
 <br>
 
-![Template de documentação para APIs](https://i.imgur.com/hvTtY56.png)
+![Template de documentação para APIs](https://github.com/Vinicius-CS/API-Doc-Template/blob/main/images/screenshot.png)
 
 - Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
 - Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
