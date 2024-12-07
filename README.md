@@ -11,6 +11,7 @@
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/PHP-034c8f?style=flat&logo=php&logoColor=ffffff" alt="PHP" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/XML-034c8f?style=flat&logoColor=ffffff" alt="XML" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/SVG-034c8f?style=flat&logoColor=034c8f&link=https://github.com/Vinicius-CS/API-Doc-Template" alt="SVG" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/ICO-034c8f?style=flat&logoColor=034c8f&link=https://github.com/Vinicius-CS/API-Doc-Template" alt="ICO" /></a>
 </div>
 
 <br>
