@@ -1,0 +1,46 @@
+<!-- == GET CHARACTERS ==================================================================================================================== -->
+
+<pre>
+	<p>Curl example:</p>
+	<code class="bash">
+curl \
+-X POST {{Server}}/auth \
+-F 'email=your_email' \
+-F 'password=your_password'
+	</code>
+</pre>
+<p>
+	To obtain the access token, you need to make a POST call to the following URL:<br>
+	<code class="higlighted break-word">{{Server}}/auth</code>
+</p>
+<br>
+<pre>
+	<p>Result example:</p>
+	<code class="json">
+{
+ "token": "ABC"
+}
+	</code>
+</pre>
+<h4>PARAMETERS</h4>
+<table class="central-overflow-x">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>email</td>
+			<td>String</td>
+			<td>(required) Your email used for logging.</td>
+		</tr>
+		<tr>
+			<td>password</td>
+			<td>String</td>
+			<td>(required) Your password used for logging.</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,38 @@
+<APIDefinition>
+	<MainTitle>API Documentation</MainTitle>
+	<TabTitle>API Documentation</TabTitle>
+	<Version>1.0.0</Version>
+	<LastUpdate>06/12/2024</LastUpdate>
+	<EMail></EMail>
+	<Logo>images/logo.svg</Logo>
+	<HLTheme>dracula.css</HLTheme>
+	<Servers>
+		<Server>
+			<name>Production</name>
+			<url>http://api.example.com</url>
+		</Server>
+		<Server>
+			<name>Local</name>
+			<url>http://api.example.local</url>
+		</Server>
+	</Servers>
+	<APIfunction id="1">
+		<title>AUTHENTICATION</title>
+		<source>content-auth</source>
+		<visible>true</visible>
+		<type>html</type>
+	</APIfunction>
+	<APIfunction id="2">
+		<title>Get Characters</title>
+		<source>content-getcharacters</source>
+		<visible>true</visible>
+		<type>html</type>
+	</APIfunction>
+	<APIfunction id="3">
+		<title>ERRORS</title>
+		<source>content-errors</source>
+		<visible>true</visible>
+		<type>html</type>
+	</APIfunction>
+</APIDefinition>
+
