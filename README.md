@@ -30,7 +30,7 @@
 	<MainTitle>API Documentation</MainTitle>
 	<TabTitle>API Documentation</TabTitle>
 	<Version>1.0.0</Version>
-	<LastUpdate>06/12/2024</LastUpdate>
+	<LastUpdate>07/12/2024</LastUpdate>
 	<Logo>images/logo.svg</Logo>
 	<HLTheme>dracula.css</HLTheme>
 	<EMail></EMail>
