@@ -4,7 +4,7 @@
 # Here is a curl example
 curl \
 -X POST http://api.example.com/character/get \
--F 'secret_key=your_api_key' \
+-F 'Authorization=your_token' \
 -F 'house=Stark,Bolton' \
 -F 'offset=0' \
 -F 'limit=50'
@@ -91,7 +91,7 @@ Result example :
 	</thead>
 	<tbody>
 		<tr>
-			<td>secret_key</td>
+			<td>Authorization</td>
 			<td>String</td>
 			<td>Your API key.</td>
 		</tr>
