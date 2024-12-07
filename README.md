@@ -1,4 +1,4 @@
-# Template de documentação de API
+# Template de documentação para APIs
 
 ## Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.
 
