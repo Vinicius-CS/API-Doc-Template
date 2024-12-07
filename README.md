@@ -51,7 +51,7 @@
 		<type>html</type>
 	</APIfunction>
 	<APIfunction id="2">
-		<title>Get Characters</title>
+		<title>GET CHARACTERS</title>
 		<source>content-getcharacters</source>
 		<visible>true</visible>
 		<type>html</type>
