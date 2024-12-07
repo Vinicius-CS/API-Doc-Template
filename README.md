@@ -1,12 +1,14 @@
-# Template de documentação de API
+# Template de documentação para APIs
 
-## Um template HTML simples, moderno e totalmente personalizável com tags para a documentação de suas APIs.
+## Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.
 
 ### Versão atual: 1.0.0
 
-- Este template é personalizável através do uso de um arquivo de definição xml (api-definition.xml).
-	<br><br>Estrutura/exemplo do arquivo xml:
+![Template de documentação para APIs](https://i.imgur.com/hvTtY56.png)
 
+- Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
+- Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
+	<br><br>Estrutura/exemplo do arquivo xml:
 ```xml
 <APIDefinition>
 	<MainTitle>API Documentation</MainTitle>
@@ -47,9 +49,9 @@
 </APIDefinition>
 ```
 
-- O projeto utiliza **tags**; essas tags vêm da seção **&lt;APIDefinition&gt;** do arquivo xml e são substituídas pelo texto nos arquivos html pós-gerados;
+- O projeto utiliza **tags**; essas tags vêm da seção `<APIDefinition>` do arquivo xml e são substituídas pelo texto nos arquivos html pós-gerados;
 - O `conteúdo` é colocado em um subdiretório `content` referenciado no arquivo xml.
-- O projeto é dividido em 4 partes: index.php (principal), header.php, start-1.php, end-1.php; o contexto é colocado entre start-1 e end-1;
+- O projeto é dividido em 4 partes: `index.php` (principal), `header.php`, `start-1.php`, `end-1.php`; o contexto é colocado entre start-1 e end-1;
 	cada uma das partes pode conter as tags.
 
 ## Informações Adicionais
@@ -68,7 +70,7 @@
 ```
 
 ### Versionamento
-Para alterar a versão, recomendo a utilização no formato `MAJOR.MINOR.PATCH`, onde:
+Para alterar a versão, recomenda-se a utilização no formato `MAJOR.MINOR.PATCH`, onde:
 
 - **MAJOR (Versão Principal)**
   - Mudanças *incompatíveis com versões anteriores*.
@@ -76,7 +78,7 @@ Para alterar a versão, recomendo a utilização no formato `MAJOR.MINOR.PATCH`,
   - **Exemplo:** Ao atualizar de *1.0.0* para *2.0.0*, exige ajustes nos sistemas que utilizam a API.
 
 - **MINOR (Versão Menor)**
-  - Adiciona *novas recursos* de maneira *compatível com versões anteriores*.
+  - Adiciona *novos recursos* de maneira *compatível com versões anteriores*.
   - Ganha novas funcionalidades, mas os recursos existentes não mudam de forma que quebre a compatibilidade.
   - **Exemplo:** Atualizar de *1.1.0* para *1.2.0* indica novos recursos sem afetar o funcionamento já existente.
 
