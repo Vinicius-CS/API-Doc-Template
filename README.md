@@ -5,11 +5,12 @@
 ### Versão atual: 1.0.0
 
 <div align='center'>
-	<img src="https://img.shields.io/badge/HTML-034c8f?style=flat&logo=html5&logoColor=ffffff" alt="HTML5" />
-	<img src="https://img.shields.io/badge/CSS-034c8f?style=flat&logo=css3&logoColor=ffffff" alt="CSS" />
-	<img src="https://img.shields.io/badge/JavaScript-034c8f?style=flat&logo=javascript&logoColor=ffffff" alt="JavaScript" />
-	<img src="https://img.shields.io/badge/PHP-034c8f?style=flat&logo=php&logoColor=ffffff" alt="PHP" />
-	<img src="https://img.shields.io/badge/XML-034c8f?style=flat&logoColor=ffffff" alt="XML" />
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/HTML-034c8f?style=flat&logo=html5&logoColor=ffffff" alt="HTML5" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/CSS-034c8f?style=flat&logo=css3&logoColor=ffffff" alt="CSS" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/JavaScript-034c8f?style=flat&logo=javascript&logoColor=ffffff" alt="JavaScript" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/PHP-034c8f?style=flat&logo=php&logoColor=ffffff" alt="PHP" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/XML-034c8f?style=flat&logoColor=ffffff" alt="XML" /></a>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/SVG-034c8f?style=flat&logoColor=034c8f&link=https://github.com/Vinicius-CS/API-Doc-Template" alt="SVG" /></a>
 </div>
 
 <br>
