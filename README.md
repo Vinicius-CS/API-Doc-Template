@@ -4,7 +4,7 @@
 
 ### Versão atual: 1.0.0
 
-![Template de documentação para APIs](https://i.imgur.com/jM2xICl.png)
+![Template de documentação para APIs](https://i.imgur.com/hvTtY56.png)
 
 - Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
 - Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
