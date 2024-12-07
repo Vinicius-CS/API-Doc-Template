@@ -94,7 +94,7 @@ foreach ($xml->APIfunction as $item)
 	else
 	{
 		$output = '<div class="overflow-hidden content-section" id="' . $item->source . '">';
-		$output .= '<h1>' . $item->title . '</h1>';
+		$output .= '<h1>' . $item->title . '<img src="./images/link-icon.svg" alt="Copy Link" class="link-icon" style="display: none;" onclick="copyLink(\'' . $item->source . '\')"></h1>';
 		$output .= $fileContents;
 		$output .= '</div>'	;
 

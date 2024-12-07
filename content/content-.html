@@ -1,21 +1,24 @@
 <!-- == GET CHARACTERS ==================================================================================================================== -->
 
-<pre><code class="bash">
-# Here is a curl example
+<pre>
+	<p>Curl example:</p>
+	<code class="bash">
 curl \
 -X POST http://api.example.com/character/get \
 -F 'Authorization=your_token' \
 -F 'house=Stark,Bolton' \
 -F 'offset=0' \
 -F 'limit=50'
-                </code></pre>
+ 	</code>
+</pre>
 <p>
 	To GET CHARACTERS you need to make a POST call to the following url :<br>
 	<code class="higlighted break-word">http://api.example.com/character/get</code>
 </p>
 <br>
-<pre><code class="json">
-Result example :
+<pre>
+	<p>Result example:</p>
+	<code class="json">
 
 {
   query:{
@@ -79,8 +82,9 @@ Result example :
     },
   ]
 }
-                </code></pre>
-<h4>QUERY PARAMETERS</h4>
+	</code>
+</pre>
+<h4>PARAMETERS</h4>
 <table class="central-overflow-x">
 	<thead>
 		<tr>
@@ -93,7 +97,7 @@ Result example :
 		<tr>
 			<td>Authorization</td>
 			<td>String</td>
-			<td>Your token.</td>
+			<td>(required) Your token.</td>
 		</tr>
 		<tr>
 			<td>search</td>

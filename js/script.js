@@ -160,6 +160,56 @@ function addCopyClick() {
 	});
 }
 
+let copyLinkTimeout = true;
+function copyLink(source) {
+	const link = window.location.origin + window.location.pathname + '#' + source;
+	navigator.clipboard.writeText(link).then(function() {
+		copyLinkTimeout = false;
+		const tooltip = document.createElement('span');
+		tooltip.className = 'tooltip';
+		tooltip.textContent = 'Copied';
+		tooltip.style.position = 'absolute';
+		document.body.appendChild(tooltip);
+
+		const iconElement = document.querySelector(`img[onclick="copyLink('${source}')"]`);
+		const rect = iconElement.getBoundingClientRect();
+		tooltip.style.top = `${rect.top + window.scrollY + rect.height / 2 - tooltip.offsetHeight / 2}px`;
+		tooltip.style.left = `${rect.right + window.scrollX + 10}px`;
+
+		tooltip.style.visibility = 'visible';
+		tooltip.style.opacity = '1';
+
+		iconElement.style.display = 'inline';
+
+		setTimeout(() => {
+			copyLinkTimeout = true;
+			tooltip.style.visibility = 'hidden';
+			tooltip.style.opacity = '0';
+			document.body.removeChild(tooltip);
+
+			const titleElement = iconElement.closest('h1');
+			const isCursorOverTitle = titleElement.matches(':hover');
+			if (!isCursorOverTitle) {
+				iconElement.style.display = 'none';
+			}
+		}, 2000);
+	});
+}
+
+function addHoverCopyLink() {
+	document.querySelectorAll('.content-section h1').forEach(element => {
+		element.addEventListener('mouseover', function () {
+			element.querySelector('.link-icon').style.display = 'inline';
+		});
+
+		element.addEventListener('mouseleave', function () {
+			if (copyLinkTimeout) {
+				element.querySelector('.link-icon').style.display = 'none';
+			}
+		});
+	});
+}
+
 function changeServer(newValue, oldValue =  localStorage.getItem('server')) {
 	document.querySelectorAll('*:not(html ,body, select, option, .left-menu, .content-menu, .content-infos)').forEach(element => {
 		if (element.innerHTML.includes(oldValue)) {
@@ -184,11 +234,13 @@ window.onload = () =>
 	calculElements();
 	addCopyClick();
 	addCopyButton();
+	addHoverCopyLink();
 };
 window.onchange = () =>
 {
 	calculElements();
 	addCopyClick();
+	addHoverCopyLink();
 }
 window.addEventListener("resize", debounce(function (e)
 {

@@ -486,6 +486,21 @@ server {
 	margin: 5px;
 	width: 16px;
 	height: 16px;
+	transition: transform 0.2s;
+}
+
+.copy-icon:hover {
+	transform: scale(1.1);
+}
+
+.link-icon {
+	margin-left: 5px;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.link-icon:hover {
+	transform: scale(1.1);
 }
 
 .content pre code {
