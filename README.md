@@ -1,8 +1,9 @@
-
-# Template de documentação para APIs
-
-### Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.
-### Versão atual: 1.0.0
+<div align='center'>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Documentation-Template/blob/main/images/logo.svg" alt="Template de Documentação para APIs" /></a>
+	<p style="font-weight: 500; font-size: 36px; margin: 0">Template de Documentação para APIs</p>
+	<p style="font-weight: 500; font-size: 16px; margin: 0;">1.0.0</p>
+	<p style="font-weight: 500; font-size: 16px">Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.</p>
+</div>
 
 <div align='center'>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/HTML-034c8f?style=flat&logo=html5&logoColor=ffffff" alt="HTML5" /></a>
@@ -16,7 +17,9 @@
 
 <br>
 
-![Template de documentação para APIs](https://github.com/Vinicius-CS/API-Doc-Template/blob/main/images/screenshot.png)
+<div align='center'>
+	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Doc-Template/blob/main/images/screenshot.png" alt="Template de Documentação para APIs" /></a>
+</div>
 
 - Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
 - Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
