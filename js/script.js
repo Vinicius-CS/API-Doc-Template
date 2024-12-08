@@ -90,7 +90,7 @@ function onScroll()
 }
 
 function addCopyButton() {
-	document.querySelectorAll('pre code:not(.notcopy)').forEach(codeElement => {
+	document.querySelectorAll('pre code:not([not-copy])').forEach(codeElement => {
 		const copyImage = document.createElement('img');
 		copyImage.className = 'copy-icon';
 		copyImage.src = './images/copy-icon.svg';
@@ -127,7 +127,7 @@ function addCopyButton() {
 }
 
 function addCopyClick() {
-	document.querySelectorAll('.content code:not(.hljs,.notcopy)').forEach(codeElement => {
+	document.querySelectorAll('.content code:not(.hljs, [not-copy])').forEach(codeElement => {
 		codeElement.style.cursor = 'pointer';
 
 		const tooltip = document.createElement('span');

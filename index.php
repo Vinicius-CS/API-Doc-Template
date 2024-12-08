@@ -14,7 +14,7 @@ if (!$xml)
 	die("Config file is missing");
 
 // Load the translations
-$currentLanguage = isset($xml->Language) ? trim($xml->Language) : 'en';
+$currentLanguage = (isset($xml->Language) && !empty($xml->Language) ? trim($xml->Language) : 'en');
 echo "<script>
 	let currentLanguage = '$currentLanguage';
 	let translations = [];
@@ -127,13 +127,12 @@ function InitTags()
 {
 	global $xml, $tags;
 
-	$tags['{{Version}}'] = (isset($xml->Version) ? trim($xml->Version) : '1.0.0');
-	$tags['{{LastUpdate}}'] = (isset($xml->LastUpdate) ? trim($xml->LastUpdate) : '');
-	$tags['{{MainTitle}}'] = (isset($xml->MainTitle) ? trim($xml->MainTitle) : '');
-	$tags['{{TabTitle}}'] = (isset($xml->TabTitle) ? trim($xml->TabTitle) : '');
-	$tags['{{Logo}}'] = (isset($xml->Logo) ? trim($xml->Logo) : 'images/logo.svg');
-	$tags['{{HLTheme}}'] = (isset($xml->HLTheme) ? trim($xml->HLTheme) : 'hightlightjs-dark.css');
-	$tags['{{EMail}}'] = (isset($xml->EMail) ? trim($xml->EMail) : '');
+	$tags['{{Version}}'] = (isset($xml->Version) && !empty($xml->Version) ? trim($xml->Version) : '1.0.0');
+	$tags['{{LastUpdate}}'] = (isset($xml->LastUpdate) && !empty($xml->LastUpdate) ? trim($xml->LastUpdate) : date('Y-m-d'));
+	$tags['{{MainTitle}}'] = (isset($xml->MainTitle) && !empty($xml->MainTitle) ? trim($xml->MainTitle) : 'API Documentation');
+	$tags['{{TabTitle}}'] = (isset($xml->TabTitle) && !empty($xml->TabTitle) ? trim($xml->TabTitle) : 'API Documentation');
+	$tags['{{Logo}}'] = (isset($xml->Logo) && !empty($xml->Logo) ? trim($xml->Logo) : 'images/logo.svg');
+	$tags['{{HLTheme}}'] = (isset($xml->HLTheme) && !empty($xml->HLTheme) ? trim($xml->HLTheme) : 'hightlightjs-dark.css');
 
 	$serversOptions = '';
 	if (isset($xml->Servers)) {

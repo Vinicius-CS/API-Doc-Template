@@ -2,9 +2,8 @@
 	<MainTitle>API Documentation</MainTitle>
 	<TabTitle>API Documentation</TabTitle>
 	<Version>1.0.0</Version>
-	<LastUpdate>07/12/2024</LastUpdate>
+	<LastUpdate>2024-12-07</LastUpdate>
 	<Language>en</Language>
-	<EMail></EMail>
 	<Logo>images/logo.svg</Logo>
 	<HLTheme>dracula.css</HLTheme>
 	<Servers>
@@ -40,4 +39,3 @@
 		<type>html</type>
 	</APIfunction>
 </APIDefinition>
-
