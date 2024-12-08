@@ -26,10 +26,9 @@
 <APIDefinition>
 	<MainTitle>API Documentation</MainTitle>
 	<TabTitle>API Documentation</TabTitle>
-	<Version>1.0.0</Version>
-	<LastUpdate>07/12/2024</LastUpdate>
+	<Version>1.1.0</Version>
+	<LastUpdate>2024-12-08</LastUpdate>
 	<Language>en</Language>
-	<EMail></EMail>
 	<Logo>images/logo.svg</Logo>
 	<HLTheme>dracula.css</HLTheme>
 	<Servers>
