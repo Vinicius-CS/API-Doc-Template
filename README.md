@@ -1,6 +1,6 @@
 <div align='center'>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Documentation-Template/blob/main/images/logo.svg" alt="Template de Documentação para APIs" /></a>
-	<h1>Template de Documentação para APIs - Versão 1.0.0</h1>
+	<h1>Template de Documentação para APIs - Versão 1.1.0</h1>
 	<h3>Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.</h3>
 </div>
 
@@ -11,9 +11,6 @@
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/CSS-034c8f?style=flat&logo=css3&logoColor=ffffff" alt="CSS" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/JavaScript-034c8f?style=flat&logo=javascript&logoColor=ffffff" alt="JavaScript" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/PHP-034c8f?style=flat&logo=php&logoColor=ffffff" alt="PHP" /></a>
-	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/XML-034c8f?style=flat&logoColor=ffffff" alt="XML" /></a>
-	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/SVG-034c8f?style=flat&logoColor=034c8f&link=https://github.com/Vinicius-CS/API-Doc-Template" alt="SVG" /></a>
-	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/ICO-034c8f?style=flat&logoColor=034c8f&link=https://github.com/Vinicius-CS/API-Doc-Template" alt="ICO" /></a>
 </div>
 
 <br>
@@ -23,28 +20,32 @@
 </div>
 
 - Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
-- Este template é personalizável através do uso de um arquivo de definição xml (`api-definition.xml`).
-	<br><br>Estrutura/exemplo do arquivo xml:
+- Este template é personalizável através do uso de um arquivo de definição XML (`api-definition.xml`).
+	<br><br>Estrutura/exemplo do arquivo XML:
 ```xml
 <APIDefinition>
 	<MainTitle>API Documentation</MainTitle>
 	<TabTitle>API Documentation</TabTitle>
 	<Version>1.0.0</Version>
 	<LastUpdate>07/12/2024</LastUpdate>
+	<Language>en</Language>
+	<EMail></EMail>
 	<Logo>images/logo.svg</Logo>
 	<HLTheme>dracula.css</HLTheme>
-	<EMail></EMail>
 	<Servers>
 		<Server>
+			<i18n>production</i18n>
 			<name>Production</name>
 			<url>http://api.example.com</url>
 		</Server>
 		<Server>
+			<i18n>local</i18n>
 			<name>Local</name>
 			<url>http://api.example.local</url>
 		</Server>
 	</Servers>
 	<APIfunction id="1">
+		<i18n>authentication</i18n>
 		<title>AUTHENTICATION</title>
 		<source>content-auth</source>
 		<visible>true</visible>
@@ -57,6 +58,7 @@
 		<type>html</type>
 	</APIfunction>
 	<APIfunction id="3">
+		<i18n>errors</i18n>
 		<title>ERRORS</title>
 		<source>content-errors</source>
 		<visible>true</visible>
@@ -65,10 +67,35 @@
 </APIDefinition>
 ```
 
-- O projeto utiliza **tags**; essas tags vêm da seção `<APIDefinition>` do arquivo xml e são substituídas pelo texto nos arquivos html pós-gerados;
-- O `conteúdo` é colocado em um subdiretório `content` referenciado no arquivo xml.
-- O projeto é dividido em 4 partes: `index.php` (principal), `header.php`, `start-1.php`, `end-1.php`; o contexto é colocado entre start-1 e end-1;
-	cada uma das partes pode conter as tags.
+- Este template possui um sistema de tradução que permite a internacionalização (i18n) do conteúdo, as traduções são carregadas a partir de um arquivo JSON (`translations.json`) e são aplicadas tanto no HTML quanto no JavaScript.
+<br><br>Estrutura/exemplo do arquivo JSON:
+```json
+{
+	"en": {
+		"main_title": "API Documentation",
+		"tab_title": "API Documentation",
+		"version": "Version",
+		"last_update": "Last Update",
+		"server": "Server",
+		"copy": "Copy",
+		"copied": "Copied",
+		"field": "Field",
+		"type": "Type",
+		"description": "Description",
+		"error_code": "Error Code",
+		"meaning": "Meaning",
+		"production": "Production",
+		"local": "Local",
+		"authentication": "Authentication",
+		"errors": "Errors"
+	}
+}
+```
+
+- O projeto utiliza **tags** e **i18n**; essas tags vêm da seção `<APIDefinition>` do arquivo XML, enquanto o i18n vêm do arquivo `translations.json`, ambos são substituídos automaticamente nos arquivos HTML pós-gerados;
+- O conteúdo é colocado em um subdiretório `content` referenciado no arquivo XML.
+- O conteúdo pode ser traduzido utilizando o atributo `data-i18n` seguido da chave do valor que será utilizada no arquivo de tradução. Se uma chave não for configurada, será utilizado o valor padrão que é o valor inserido dentro das tags HTML.
+- O projeto é dividido em 4 partes: `index.php` (principal), `header.php`, `start-1.php`, `end-1.php`; o contexto é colocado entre *start-1* e *end-1*; cada uma das partes pode conter tags, bem como o sistema de tradução em cada tag de texto no HTML.
 
 ## Informações Adicionais
 

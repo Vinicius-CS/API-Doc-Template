@@ -13,6 +13,13 @@ $xml = simplexml_load_file('api-definition.xml');
 if (!$xml)
 	die("Config file is missing");
 
+// Load the translations
+$currentLanguage = isset($xml->Language) ? trim($xml->Language) : 'en';
+echo "<script>
+	let currentLanguage = '$currentLanguage';
+	let translations = " . json_encode($translations) . ";
+</script>";
+
 InitTags();
 
 // ------------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +101,7 @@ foreach ($xml->APIfunction as $item)
 	else
 	{
 		$output = '<div class="overflow-hidden content-section" id="' . $item->source . '">';
-		$output .= '<h1>' . $item->title . '<img src="./images/link-icon.svg" alt="Copy Link" class="link-icon" style="visibility: hidden;" onclick="copyLink(\'' . $item->source . '\')"></h1>';
+		$output .= '<h1 data-i18n=\'' . $item->i18n . '\'>' . $item->title . '<img src="./images/link-icon.svg" alt="Copy Link" class="link-icon" style="visibility: hidden;" onclick="copyLink(\'' . $item->source . '\')"></h1>';
 		$output .= $fileContents;
 		$output .= '</div>'	;
 
@@ -133,7 +140,8 @@ function InitTags()
 			foreach ($xml->Servers->Server as $server) {
 					$serverUrl = trim($server->url);
 					$serverName = trim($server->name);
-					$serversOptions .= "<option value=\"$serverUrl\">$serverName</option>";
+					$i18n = trim($server->i18n);
+					$serversOptions .= '<option value=\'' . $serverUrl . '\' data-i18n=\'' . $i18n . '\'>' . $serverName . '</option>';
 			}
 	}
 	$tags['{{Servers}}'] = $serversOptions;

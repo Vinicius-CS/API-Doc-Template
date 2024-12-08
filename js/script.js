@@ -1,4 +1,3 @@
-
 var elements = [];
 
 [].forEach.call(document.querySelectorAll('.scroll-to-link'), function (div)
@@ -95,11 +94,11 @@ function addCopyButton() {
 		const copyImage = document.createElement('img');
 		copyImage.className = 'copy-icon';
 		copyImage.src = './images/copy-icon.svg';
-		copyImage.alt = 'Copiar';
+		copyImage.alt = translate('copy', 'Copy');
 
 		const tooltip = document.createElement('span');
 		tooltip.className = 'tooltip';
-		tooltip.textContent = 'Copied';
+		tooltip.textContent = translate('copied', 'Copied');
 
 		copyImage.addEventListener('click', () => {
 			const textArea = document.createElement('textarea');
@@ -133,7 +132,7 @@ function addCopyClick() {
 
 		const tooltip = document.createElement('span');
 		tooltip.className = 'tooltip';
-		tooltip.textContent = 'Copied';
+		tooltip.textContent = translate('copied', 'Copied');
 		document.body.appendChild(tooltip);
 
 		codeElement.addEventListener('click', function () {
@@ -218,7 +217,30 @@ function changeServer(newValue, oldValue =  localStorage.getItem('server')) {
 	localStorage.setItem('server', newValue);
 }
 
+function loadTranslations(callback) {
+	fetch('./translations.json')
+		.then(response => response.json())
+		.then(data => {
+			translations = data;
+			callback();
+		});
+}
+
+function translate(key, defaultText = key) {
+	return translations[currentLanguage][key] || defaultText;
+}
+
+function applyTranslations() {
+	document.querySelectorAll('[data-i18n]').forEach(element => {
+		const key = element.getAttribute('data-i18n');
+		if (key !== (translateText = translate(key))) {
+			element.textContent = translateText;
+		}
+	});
+}
+
 calculElements();
+loadTranslations(applyTranslations);
 window.onload = () =>
 {
 	if (localStorage.getItem('server') === null || localStorage.getItem('server') === '') {
