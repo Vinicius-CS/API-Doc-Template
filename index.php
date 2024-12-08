@@ -17,7 +17,7 @@ if (!$xml)
 $currentLanguage = isset($xml->Language) ? trim($xml->Language) : 'en';
 echo "<script>
 	let currentLanguage = '$currentLanguage';
-	let translations = " . json_encode($translations) . ";
+	let translations = [];
 </script>";
 
 InitTags();
