@@ -1,6 +1,6 @@
 <div align='center'>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Documentation-Template/blob/main/images/logo.svg" alt="Template de Documentação para APIs" /></a>
-	<h1>Template de Documentação para APIs - Versão 1.1.0</h1>
+	<h1>Template de Documentação para APIs - <a href="https://github.com/Vinicius-CS/API-Documentation-Template/wiki/Changelog">Versão 1.1.0</a></h1>
 	<h3>Um template HTML simples, moderno e totalmente personalizável para a documentação de APIs.</h3>
 </div>
 
