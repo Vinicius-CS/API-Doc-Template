@@ -196,12 +196,16 @@ function copyLink(source) {
 function addHoverCopyLink() {
 	document.querySelectorAll('.content-section h1').forEach(element => {
 		element.addEventListener('mouseover', function () {
-			element.querySelector('.link-icon').style.visibility = 'visible';
+			if (element.querySelector('.link-icon')) {
+				element.querySelector('.link-icon').style.visibility = 'visible';
+			}
 		});
 
 		element.addEventListener('mouseleave', function () {
 			if (copyLinkTimeout) {
-				element.querySelector('.link-icon').style.visibility = 'hidden';
+				if (element.querySelector('.link-icon')) {
+					element.querySelector('.link-icon').style.visibility = 'hidden';
+				}
 			}
 		});
 	});
