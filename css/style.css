@@ -118,6 +118,13 @@ video {
 	width: 100%;
 }
 
+code,
+pre {
+	tab-size: 2;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+}
+
 /* BASE
 ----------------------------------------------------------------------------------------*/
 
@@ -192,7 +199,6 @@ pre {
 
 .higlighted {
 	background-color: rgba(0, 0, 0, 0.05);
-	/* texte highlihted = gris sur fond gris clair */
 	padding: 3px;
 	border-radius: 3px;
 	display: flex;
@@ -204,7 +210,6 @@ server {
 	display: contents;
 }
 
-/* DOMI */
 .tab1 {
 	tab-size: 2;
 }
@@ -412,7 +417,6 @@ server {
 }
 
 .content h4 {
-	/* query parameters, retuned value */
 	color: #00a8e3;
 	margin-top: 0;
 	text-transform: none;
