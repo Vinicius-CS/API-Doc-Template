@@ -221,7 +221,7 @@ function changeServer(newValue, oldValue =  localStorage.getItem('server')) {
 calculElements();
 window.onload = () =>
 {
-	if (localStorage.getItem('server') === null) {
+	if (localStorage.getItem('server') === null || localStorage.getItem('server') === '') {
 		localStorage.setItem('server', '{{Server}}');
 		changeServer(document.getElementById('server').value);
 	} else {
