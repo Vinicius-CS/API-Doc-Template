@@ -50,7 +50,7 @@ function debounce(func, wait = 100) {
 	};
 }
 
-function initializePage() {
+async function initializePage() {
 	if (pageInitialized) return;
 	pageInitialized = true;
 
@@ -66,8 +66,8 @@ function initializePage() {
 		serverSelector.appendChild(option);
 	});
 
-	apiFunctions.forEach(async item => {
-		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false') return;
+	for (const item of apiFunctions) {
+		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false') continue;
 
 		const id = item.querySelector('source').textContent;
 		const title = translate(item.querySelector('i18n')?.textContent || item.querySelector('title').textContent);
@@ -98,7 +98,7 @@ function initializePage() {
 		} else {
 			console.warn(`${translate('content_not_found_for', 'Content not found for')} '${id}'`);
 		}
-	});
+	}
 
 	localStorage.setItem('server', (serverSelector.value || '{{Server}}'));
 	applyTranslations();
@@ -106,6 +106,7 @@ function initializePage() {
 	selectFirstMenuItem();
 	addEventListeners();
 	addCopyButton();
+	addCopyClick();
 	addHoverCopyLink();
 	scrollToHash();
 }
@@ -149,10 +150,8 @@ function applyTranslations() {
 }
 
 function changeServer(newValue) {
-	console.log(newValue);
 	newValue = newValue || document.getElementById('server-selector').value || '{{Server}}';
 	const oldValue = localStorage.getItem('server') || '{{Server}}';
-	console.log(newValue, oldValue);
 
 	function replaceTextContent(node) {
 		if (node.nodeType === Node.TEXT_NODE) {
@@ -200,25 +199,143 @@ function setActiveMenuItem(activeItem) {
 	activeItem.classList.add('active');
 }
 
-function addCopyButton() {
-	document.querySelectorAll('pre code').forEach(codeElement => {
-		const copyButton = document.createElement('button');
-		copyButton.textContent = translate('copy', 'Copy');
-		copyButton.onclick = () => {
-			navigator.clipboard.writeText(codeElement.textContent);
-			alert(translate('copied', 'Copied'));
-		};
-		codeElement.parentNode.insertBefore(copyButton, codeElement);
+function addCopyButton()
+{
+	document.querySelectorAll('pre code:not([not-copy])').forEach(codeElement =>
+	{
+		const copyImage = document.createElement('img');
+		copyImage.className = 'copy-icon';
+		copyImage.src = './images/copy-icon.svg';
+		copyImage.alt = translate('copy', 'Copy');
+
+		const tooltip = document.createElement('span');
+		tooltip.className = 'tooltip';
+		tooltip.textContent = translate('copied', 'Copied');
+
+		copyImage.addEventListener('click', () =>
+		{
+			const textArea = document.createElement('textarea');
+			textArea.value = codeElement.textContent;
+			document.body.appendChild(textArea);
+			textArea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textArea);
+
+			tooltip.style.visibility = 'visible';
+			tooltip.style.opacity = '1';
+
+			setTimeout(() =>
+			{
+				tooltip.style.visibility = 'hidden';
+				tooltip.style.opacity = '0';
+			}, 2000);
+		});
+
+		const container = document.createElement('div');
+		container.style.position = 'relative';
+		codeElement.parentNode.insertBefore(container, codeElement);
+		container.appendChild(copyImage);
+		container.appendChild(tooltip);
+		container.appendChild(codeElement);
 	});
 }
 
-function addHoverCopyLink() {
-	document.querySelectorAll('.content-section h1').forEach(element => {
-		element.addEventListener('mouseover', () => {
-			element.querySelector('.link-icon').style.visibility = 'visible';
+function addCopyClick()
+{
+	document.querySelectorAll('.content code:not(.hljs, [not-copy])').forEach(codeElement =>
+	{
+		codeElement.style.cursor = 'pointer';
+
+		const tooltip = document.createElement('span');
+		tooltip.className = 'tooltip';
+		tooltip.textContent = translate('copied', 'Copied');
+		document.body.appendChild(tooltip);
+
+		codeElement.addEventListener('click', function ()
+		{
+			const textArea = document.createElement('textarea');
+			textArea.value = codeElement.textContent;
+			document.body.appendChild(textArea);
+			textArea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textArea);
+
+			const rect = codeElement.getBoundingClientRect();
+			tooltip.style.top = `${rect.top + window.scrollY + rect.height / 2 - tooltip.offsetHeight / 2}px`;
+			tooltip.style.left = `${rect.right + window.scrollX + 10}px`;
+
+			tooltip.style.visibility = 'visible';
+			tooltip.style.opacity = '1';
+
+			setTimeout(() =>
+			{
+				tooltip.style.visibility = 'hidden';
+				tooltip.style.opacity = '0';
+			}, 2000);
 		});
-		element.addEventListener('mouseleave', () => {
-			element.querySelector('.link-icon').style.visibility = 'hidden';
+	});
+}
+
+let copyLinkTimeout = true;
+function copyLink(source)
+{
+	const link = window.location.origin + window.location.pathname + '#' + source;
+	navigator.clipboard.writeText(link).then(function ()
+	{
+		copyLinkTimeout = false;
+		const tooltip = document.createElement('span');
+		tooltip.className = 'tooltip';
+		tooltip.textContent = translate('copied', 'Copied');
+		document.body.appendChild(tooltip);
+
+		const iconElement = document.querySelector(`img[onclick="copyLink('${source}')"]`);
+		const rect = iconElement.getBoundingClientRect();
+		tooltip.style.top = `${rect.top + window.scrollY + rect.height / 2 - tooltip.offsetHeight / 2}px`;
+		tooltip.style.left = `${rect.right + window.scrollX + 10}px`;
+
+		tooltip.style.visibility = 'visible';
+		tooltip.style.opacity = '1';
+
+		iconElement.style.display = 'inline';
+
+		setTimeout(() =>
+		{
+			copyLinkTimeout = true;
+			tooltip.style.visibility = 'hidden';
+			tooltip.style.opacity = '0';
+			document.body.removeChild(tooltip);
+
+			const titleElement = iconElement.closest('h1');
+			const isCursorOverTitle = titleElement.matches(':hover');
+			if (!isCursorOverTitle)
+			{
+				iconElement.style.visibility = 'hidden';
+			}
+		}, 2000);
+	});
+}
+
+function addHoverCopyLink()
+{
+	document.querySelectorAll('.content-section h1').forEach(element =>
+	{
+		element.addEventListener('mouseover', function ()
+		{
+			if (element.querySelector('.link-icon'))
+			{
+				element.querySelector('.link-icon').style.visibility = 'visible';
+			}
+		});
+
+		element.addEventListener('mouseleave', function ()
+		{
+			if (copyLinkTimeout)
+			{
+				if (element.querySelector('.link-icon'))
+				{
+					element.querySelector('.link-icon').style.visibility = 'hidden';
+				}
+			}
 		});
 	});
 }
