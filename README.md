@@ -10,7 +10,6 @@
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/HTML-034c8f?style=flat&logo=html5&logoColor=ffffff" alt="HTML5" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/CSS-034c8f?style=flat&logo=css3&logoColor=ffffff" alt="CSS" /></a>
 	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/JavaScript-034c8f?style=flat&logo=javascript&logoColor=ffffff" alt="JavaScript" /></a>
-	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://img.shields.io/badge/PHP-034c8f?style=flat&logo=php&logoColor=ffffff" alt="PHP" /></a>
 </div>
 
 <br>
@@ -91,10 +90,9 @@
 }
 ```
 
-- O projeto utiliza **tags** e **i18n**; essas tags vêm da seção `<APIDefinition>` do arquivo XML, enquanto o i18n vêm do arquivo `translations.json`, ambos são substituídos automaticamente nos arquivos HTML pós-gerados;
+- O projeto utiliza **tags** e **i18n**; essas tags vêm da seção `<APIDefinition>` do arquivo XML, enquanto o i18n vêm do arquivo `translations.json`, ambos são substituídos automaticamente no HTML pós-gerados;
 - O conteúdo é colocado em um subdiretório `content` referenciado no arquivo XML.
 - O conteúdo pode ser traduzido utilizando o atributo `data-i18n` seguido da chave do valor que será utilizada no arquivo de tradução. Se uma chave não for configurada, será utilizado o valor padrão que é o valor inserido dentro das tags HTML.
-- O projeto é dividido em 4 partes: `index.php` (principal), `header.php`, `start-1.php`, `end-1.php`; o contexto é colocado entre *start-1* e *end-1*; cada uma das partes pode conter tags, bem como o sistema de tradução em cada tag de texto no HTML.
 
 ## Informações Adicionais
 
