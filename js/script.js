@@ -47,8 +47,7 @@ function initializePage()
 
 	apiFunctions.forEach(item =>
 	{
-		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false')
-		{
+		if (item.querySelector('visible')?.textContent?.toLowerCase() == false) {
 			return;
 		}
 
@@ -132,6 +131,7 @@ function addEventListeners()
 	};
 
 	window.addEventListener('resize', debounce(calculElements));
+	window.addEventListener('scroll', onScroll);
 }
 
 function setActiveMenuItem(activeItem)
