@@ -47,9 +47,7 @@ function initializePage()
 
 	apiFunctions.forEach(async item =>
 	{
-		if (item.querySelector('visible')?.textContent?.toLowerCase() == false) {
-			return;
-		}
+		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false') return;
 
 		const id = item.querySelector('source').textContent;
 		const title = translate(item.querySelector('i18n')?.textContent || item.querySelector('title').textContent);
@@ -81,8 +79,7 @@ function initializePage()
 					menuItem.dataset.target = id;
 					menuItem.innerHTML = `<a>${title}</a>`;
 					document.getElementById('menu-items').appendChild(menuItem);
-				}
-				else
+				} else
 				{
 					console.warn(`${translate('content_not_found_for', 'Content not found for')} '${id}.${item.querySelector('type').textContent.toLowerCase()}'`);
 				}
@@ -94,20 +91,22 @@ function initializePage()
 
 	applyTranslations();
 	calculElements();
+	selectFirstMenuItem();
 	addCopyClick();
 	addCopyButton();
 	addHoverCopyLink();
 	scrollToHash();
-	changeServer();
 }
 
 function addEventListeners()
 {
-	document.getElementById('button-menu-mobile')?.addEventListener('click', (e) => {
+	document.getElementById('button-menu-mobile')?.addEventListener('click', (e) =>
+	{
 		e.preventDefault();
 		document.querySelector('html').classList.toggle('menu-opened');
 	});
-	document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) => {
+	document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) =>
+	{
 		e.preventDefault();
 		document.querySelector('html').classList.remove('menu-opened');
 	});
@@ -123,7 +122,8 @@ function addEventListeners()
 		};
 	});
 
-	document.getElementById('server-selector').addEventListener('change', (e) => {
+	document.getElementById('server-selector').addEventListener('change', (e) =>
+	{
 		changeServer(e.target.value);
 	});
 
@@ -135,6 +135,15 @@ function setActiveMenuItem(activeItem)
 {
 	document.querySelectorAll('.content-menu li').forEach(el => el.classList.remove('active'));
 	activeItem.classList.add('active');
+}
+
+function selectFirstMenuItem()
+{
+	const firstMenuItem = document.querySelector('.content-menu li');
+	if (firstMenuItem)
+	{
+		setActiveMenuItem(firstMenuItem);
+	}
 }
 
 function translate(key, defaultText = key)
@@ -212,12 +221,11 @@ function onScroll()
 	}
 }
 
-function changeServer(newValue = document.getElementById('server-selector').value, oldValue = localStorage.getItem('server'))
+function changeServer(newValue, oldValue = localStorage.getItem('server'))
 {
 	document.querySelectorAll('.copy-icon, .tooltip').forEach(element => element.remove());
 	document.querySelectorAll('*:not(html, body, select, option, meta, link, script, style, .left-menu, .content-menu, .content-infos)').forEach(element =>
 	{
-		console.log(element, element.innerHTML, element.innerHTML.includes(oldValue), element.innerHTML.includes('{{Server}}'));
 		if (element.innerHTML.includes(oldValue))
 		{
 			element.innerHTML = element.innerHTML.replace(new RegExp(oldValue, 'g'), newValue);
@@ -398,11 +406,13 @@ function scrollToHash()
 	}
 }
 
-document.getElementById('button-menu-mobile')?.addEventListener('click', (e) => {
+document.getElementById('button-menu-mobile')?.addEventListener('click', (e) =>
+{
 	e.preventDefault();
 	document.querySelector('html').classList.toggle('menu-opened');
 });
-document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) => {
+document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) =>
+{
 	e.preventDefault();
 	document.querySelector('html').classList.remove('menu-opened');
 });
@@ -411,12 +421,21 @@ loadFiles();
 calculElements();
 window.onload = () =>
 {
+	if (localStorage.getItem('server') === null || localStorage.getItem('server') === '')
+	{
+		localStorage.setItem('server', '{{Server}}');
+		changeServer(document.getElementById('server-selector').value);
+	} else
+	{
+		document.getElementById('server-selector').value = localStorage.getItem('server');
+		changeServer(document.getElementById('server-selector').value, '{{Server}}');
+	}
+
 	calculElements();
-	scrollToHash();
 	addCopyClick();
 	addCopyButton();
 	addHoverCopyLink();
-	changeServer();
+	scrollToHash();
 };
 window.addEventListener("resize", debounce(function (e)
 {
