@@ -82,7 +82,7 @@ function initializePage() {
 				<h1>${title}
 					<img src="./images/link-icon.svg" alt="${translate('copy', 'Copy')}" class="link-icon" style="visibility: hidden;" onclick="copyLink('${id}')">
 				</h1>
-				${content.replaceAll('{{Server}}', serverSelector.value)}
+				${content.replaceAll((localStorage.getItem('Server') || '{{Server}}'), serverSelector.value)}
 			`;
 			contentContainer.appendChild(section);
 
@@ -100,6 +100,7 @@ function initializePage() {
 		}
 	});
 
+	localStorage.setItem('server', (serverSelector.value || '{{Server}}'));
 	applyTranslations();
 	calculElements();
 	selectFirstMenuItem();
@@ -148,7 +149,10 @@ function applyTranslations() {
 }
 
 function changeServer(newValue) {
+	console.log(newValue);
+	newValue = newValue || document.getElementById('server-selector').value || '{{Server}}';
 	const oldValue = localStorage.getItem('server') || '{{Server}}';
+	console.log(newValue, oldValue);
 
 	function replaceTextContent(node) {
 		if (node.nodeType === Node.TEXT_NODE) {
@@ -228,9 +232,4 @@ function scrollToHash() {
 
 document.addEventListener('DOMContentLoaded', () => {
 	loadFiles();
-	const savedServer = localStorage.getItem('server');
-	if (savedServer) {
-		document.getElementById('server-selector').value = savedServer;
-		changeServer(savedServer);
-	}
 });
