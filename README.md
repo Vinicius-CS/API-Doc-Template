@@ -15,7 +15,8 @@
 <br>
 
 <div align='center'>
-	<a href="https://github.com/Vinicius-CS/API-Doc-Template"><img src="https://github.com/Vinicius-CS/API-Doc-Template/blob/main/images/screenshot.png" alt="Template de Documentação para APIs" /></a>
+	<h3><a href="https://vinicius-cs.github.io/API-Documentation-Template/">Visualizar Template</a></h3>
+	<a href="https://vinicius-cs.github.io/API-Documentation-Template/"><img src="https://github.com/Vinicius-CS/API-Doc-Template/blob/main/images/screenshot.png" alt="Template de Documentação para APIs" /></a>
 </div>
 
 - Este template é baseado em [API-Documentation-HTML-Template-V2](https://github.com/VDHSoft-com/API-Documentation-HTML-Template-V2), versão 2.0.0 de VDHSoft-com.
