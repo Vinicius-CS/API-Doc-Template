@@ -45,7 +45,7 @@ function initializePage()
 		serverSelector.appendChild(option);
 	});
 
-	apiFunctions.forEach(item =>
+	apiFunctions.forEach(async item =>
 	{
 		if (item.querySelector('visible')?.textContent?.toLowerCase() == false) {
 			return;
@@ -54,7 +54,7 @@ function initializePage()
 		const id = item.querySelector('source').textContent;
 		const title = translate(item.querySelector('i18n')?.textContent || item.querySelector('title').textContent);
 
-		fetch(`./content/${id}.${item.querySelector('type').textContent.toLowerCase()}`)
+		await fetch(`./content/${id}.${item.querySelector('type').textContent.toLowerCase()}`)
 			.then(response => response.text())
 			.then(content =>
 			{
@@ -103,16 +103,14 @@ function initializePage()
 
 function addEventListeners()
 {
-	document.getElementById('button-menu-mobile').onclick = function (e)
-	{
+	document.getElementById('button-menu-mobile')?.addEventListener('click', (e) => {
 		e.preventDefault();
 		document.querySelector('html').classList.toggle('menu-opened');
-	};
-	document.querySelector('.left-menu .mobile-menu-closer').onclick = function (e)
-	{
+	});
+	document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) => {
 		e.preventDefault();
 		document.querySelector('html').classList.remove('menu-opened');
-	};
+	});
 
 	document.querySelectorAll('.scroll-to-link').forEach(item =>
 	{
@@ -125,10 +123,9 @@ function addEventListeners()
 		};
 	});
 
-	document.getElementById('server-selector').onchange = function (e)
-	{
+	document.getElementById('server-selector').addEventListener('change', (e) => {
 		changeServer(e.target.value);
-	};
+	});
 
 	window.addEventListener('resize', debounce(calculElements));
 	window.addEventListener('scroll', onScroll);
@@ -401,16 +398,14 @@ function scrollToHash()
 	}
 }
 
-document.getElementById('button-menu-mobile').onclick = function (e)
-{
+document.getElementById('button-menu-mobile')?.addEventListener('click', (e) => {
 	e.preventDefault();
 	document.querySelector('html').classList.toggle('menu-opened');
-};
-document.querySelector('.left-menu .mobile-menu-closer').onclick = function (e)
-{
+});
+document.querySelector('.left-menu .mobile-menu-closer')?.addEventListener('click', (e) => {
 	e.preventDefault();
 	document.querySelector('html').classList.remove('menu-opened');
-};
+});
 
 loadFiles();
 calculElements();
