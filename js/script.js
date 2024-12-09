@@ -82,7 +82,7 @@ function initializePage() {
 				<h1>${title}
 					<img src="./images/link-icon.svg" alt="${translate('copy', 'Copy')}" class="link-icon" style="visibility: hidden;" onclick="copyLink('${id}')">
 				</h1>
-				${content}
+				${content.replaceAll('{{Server}}', serverSelector.value)}
 			`;
 			contentContainer.appendChild(section);
 
@@ -148,16 +148,19 @@ function applyTranslations() {
 }
 
 function changeServer(newValue) {
-	const oldValue = localStorage.getItem('server') || '';
+	const oldValue = localStorage.getItem('server') || '{{Server}}';
 
-	document.querySelectorAll('*').forEach(element => {
-		if (element.childNodes) {
-			element.childNodes.forEach(node => {
-				if (node.nodeType === Node.TEXT_NODE && node.nodeValue.includes(oldValue)) {
-					node.nodeValue = node.nodeValue.replaceAll(oldValue, newValue);
-				}
-			});
+	function replaceTextContent(node) {
+		if (node.nodeType === Node.TEXT_NODE) {
+			node.nodeValue = node.nodeValue.replace(new RegExp(oldValue, 'gi'), newValue);
+			node.nodeValue = node.nodeValue.replace(new RegExp('{{Server}}', 'gi'), newValue);
+		} else {
+			node.childNodes.forEach(replaceTextContent);
 		}
+	}
+
+	document.querySelectorAll('.content').forEach(element => {
+		element.childNodes.forEach(replaceTextContent);
 	});
 
 	localStorage.setItem('server', newValue);
@@ -170,7 +173,6 @@ function calculElements() {
 		totalHeight += div.offsetHeight;
 		elements.push({ id: div.id, maxHeight: totalHeight - 25 });
 	});
-	console.log("Calculated Elements:", elements); // Debug para verificar os elementos
 	onScroll();
 }
 
