@@ -126,7 +126,6 @@ function addEventListeners()
 
 	document.getElementById('server-selector').onchange = function (e)
 	{
-		console.log(e.target.value);
 		changeServer(e.target.value);
 	};
 
@@ -217,9 +216,11 @@ function onScroll()
 
 function changeServer(newValue, oldValue = localStorage.getItem('server'))
 {
+	console.log('Changing server from', oldValue, 'to', newValue);
 	document.querySelectorAll('.copy-icon, .tooltip').forEach(element => element.remove());
 	document.querySelectorAll('*:not(html, body, select, option, .left-menu, .content-menu, .content-infos)').forEach(element =>
 	{
+		console.log(element, element.innerHTML, element.innerHTML.includes(oldValue), element.innerHTML.includes('{{Server}}'));
 		if (element.innerHTML.includes(oldValue))
 		{
 			element.innerHTML = element.innerHTML.replace(new RegExp(oldValue, 'g'), newValue);
