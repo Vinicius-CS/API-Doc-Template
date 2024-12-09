@@ -126,6 +126,7 @@ function addEventListeners()
 
 	document.getElementById('server-selector').onchange = function (e)
 	{
+		console.log(e.target.value);
 		changeServer(e.target.value);
 	};
 
@@ -414,13 +415,13 @@ loadFiles();
 calculElements();
 window.onload = () =>
 {
-	changeServer(document.getElementById('server-selector').value);
-
 	calculElements();
+	scrollToHash();
 	addCopyClick();
 	addCopyButton();
 	addHoverCopyLink();
-	scrollToHash();
+
+	changeServer(document.getElementById('server-selector').value);
 };
 window.addEventListener("resize", debounce(function (e)
 {
