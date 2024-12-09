@@ -5,8 +5,8 @@ let elements = [];
 
 async function loadFiles()
 {
-	await loadXML();
 	await loadTranslations();
+	await loadXML();
 	initializePage();
 }
 
@@ -16,6 +16,12 @@ async function loadXML()
 	const text = await response.text();
 	const parser = new DOMParser();
 	xmlData = parser.parseFromString(text, "application/xml");
+	currentLanguage = xmlData.querySelector('Language').textContent;
+
+	if (!translations.hasOwnProperty(currentLanguage))
+	{
+		currentLanguage = 'en';
+	}
 }
 
 async function loadTranslations()
@@ -41,43 +47,55 @@ function initializePage()
 
 	apiFunctions.forEach(item =>
 	{
-		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false') return;
+		if (item.querySelector('visible')?.textContent?.toLowerCase() === 'false')
+		{
+			return;
+		}
 
 		const id = item.querySelector('source').textContent;
 		const title = translate(item.querySelector('i18n')?.textContent || item.querySelector('title').textContent);
 
-		const menuItem = document.createElement('li');
-		menuItem.classList.add('scroll-to-link');
-		menuItem.dataset.target = id;
-		menuItem.innerHTML = `<a>${title}</a>`;
-		document.getElementById('menu-items').appendChild(menuItem);
-
-		fetch(`./content/${id}.html`)
+		fetch(`./content/${id}.${item.querySelector('type').textContent.toLowerCase()}`)
 			.then(response => response.text())
 			.then(content =>
 			{
-				const section = document.createElement('div');
-				section.classList.add('content-section');
-				section.classList.add('overflow-hidden');
-				section.id = id;
-				section.innerHTML = `
-						<h1 data-i18n="${title}">${title}
-							<img src="./images/link-icon.svg" alt="Copy Link" class="link-icon" style="visibility: hidden;" onclick="copyLink('${id}')">
-						</h1>
-						${content || '<p>FILE NOT FOUND</p>'}
-				`;
-				contentContainer.appendChild(section);
-				section.querySelectorAll('pre code').forEach((block) =>
+				if (!content.includes('<!doctype html><html><head><title>404 Not Found</title>'))
 				{
-					hljs.highlightBlock(block);
-				});
+					const section = document.createElement('div');
+					section.classList.add('content-section');
+					section.classList.add('overflow-hidden');
+					section.id = id;
+					section.innerHTML = `
+						<h1>${title}
+							<img src="./images/link-icon.svg" alt="${translate('copy', 'Copy')}" class="link-icon" style="visibility: hidden;" onclick="copyLink('${id}')">
+						</h1>
+						${content}
+					`;
+					contentContainer.appendChild(section);
+					section.querySelectorAll('pre code').forEach((block) =>
+					{
+						hljs.highlightBlock(block);
+					});
+
+					const menuItem = document.createElement('li');
+					menuItem.classList.add('scroll-to-link');
+					menuItem.dataset.target = id;
+					menuItem.innerHTML = `<a>${title}</a>`;
+					document.getElementById('menu-items').appendChild(menuItem);
+				}
+				else
+				{
+					console.warn(`${translate('content_not_found_for', 'Content not found for')} '${id}.${item.querySelector('type').textContent.toLowerCase()}'`);
+				}
+
+				applyTranslations();
+				addEventListeners();
 			});
 	});
 
 	applyTranslations();
 	calculElements();
 	selectFirstMenuItem();
-	addEventListeners();
 	addCopyClick();
 	addCopyButton();
 	addHoverCopyLink();
@@ -131,9 +149,9 @@ function selectFirstMenuItem()
 	}
 }
 
-function translate(key)
+function translate(key, defaultText = key)
 {
-	return translations[currentLanguage]?.[key] || key;
+	return translations[currentLanguage]?.[key] || defaultText;
 }
 
 function applyTranslations()
@@ -312,7 +330,7 @@ function copyLink(source)
 		copyLinkTimeout = false;
 		const tooltip = document.createElement('span');
 		tooltip.className = 'tooltip';
-		tooltip.textContent = 'Copied';
+		tooltip.textContent = translate('copied', 'Copied');
 		document.body.appendChild(tooltip);
 
 		const iconElement = document.querySelector(`img[onclick="copyLink('${source}')"]`);

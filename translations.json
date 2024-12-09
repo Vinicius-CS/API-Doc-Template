@@ -15,7 +15,8 @@
 		"production": "Production",
 		"local": "Local",
 		"authentication": "Authentication",
-		"errors": "Errors"
+		"errors": "Errors",
+		"content_not_found_for": "Content not found for"
 	},
 	"pt": {
 		"main_title": "Documentação API",
@@ -33,7 +34,8 @@
 		"production": "Produção",
 		"local": "Local",
 		"authentication": "Autenticação",
-		"errors": "Erros"
+		"errors": "Erros",
+		"content_not_found_for": "Conteúdo não encontrado para"
 	},
 	"es": {
 		"main_title": "Documentación API",
@@ -51,7 +53,8 @@
 		"production": "Producción",
 		"local": "Local",
 		"authentication": "Autenticación",
-		"errors": "Errores"
+		"errors": "Errores",
+		"content_not_found_for": "Contenido no encontrado para"
 	},
 	"de": {
 		"main_title": "API-Dokumentation",
@@ -69,7 +72,8 @@
 		"production": "Produktion",
 		"local": "Lokal",
 		"authentication": "Authentifizierung",
-		"errors": "Fehler"
+		"errors": "Fehler",
+		"content_not_found_for": "Inhalt nicht gefunden für"
 	},
 	"fr": {
 		"main_title": "Documentation API",
@@ -87,6 +91,7 @@
 		"production": "Production",
 		"local": "Local",
 		"authentication": "Authentification",
-		"errors": "Erreurs"
+		"errors": "Erreurs",
+		"content_not_found_for": "Contenu non trouvé pour"
 	}
 }
