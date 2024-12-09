@@ -29,7 +29,6 @@
 	<LastUpdate>2024-12-07</LastUpdate>
 	<Language>en</Language>
 	<Logo>images/logo.svg</Logo>
-	<HLTheme>dracula.css</HLTheme>
 	<Servers>
 		<Server>
 			<i18n>production</i18n>
