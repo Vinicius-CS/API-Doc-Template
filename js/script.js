@@ -94,7 +94,6 @@ function initializePage()
 
 	applyTranslations();
 	calculElements();
-	selectFirstMenuItem();
 	addCopyClick();
 	addCopyButton();
 	addHoverCopyLink();
@@ -138,15 +137,6 @@ function setActiveMenuItem(activeItem)
 {
 	document.querySelectorAll('.content-menu li').forEach(el => el.classList.remove('active'));
 	activeItem.classList.add('active');
-}
-
-function selectFirstMenuItem()
-{
-	const firstMenuItem = document.querySelector('.content-menu li');
-	if (firstMenuItem)
-	{
-		setActiveMenuItem(firstMenuItem);
-	}
 }
 
 function translate(key, defaultText = key)
@@ -227,11 +217,16 @@ function onScroll()
 function changeServer(newValue, oldValue = localStorage.getItem('server'))
 {
 	document.querySelectorAll('.copy-icon, .tooltip').forEach(element => element.remove());
-	document.querySelectorAll('*:not(html ,body, select, option, .left-menu, .content-menu, .content-infos)').forEach(element =>
+	document.querySelectorAll('*:not(html, body, select, option, .left-menu, .content-menu, .content-infos)').forEach(element =>
 	{
 		if (element.innerHTML.includes(oldValue))
 		{
 			element.innerHTML = element.innerHTML.replace(new RegExp(oldValue, 'g'), newValue);
+		}
+
+		if (element.innerHTML.includes('{{Server}}'))
+		{
+			element.innerHTML = element.innerHTML.replace(new RegExp('{{Server}}', 'g'), newValue);
 		}
 	});
 
@@ -419,15 +414,7 @@ loadFiles();
 calculElements();
 window.onload = () =>
 {
-	if (localStorage.getItem('server') === null || localStorage.getItem('server') === '')
-	{
-		localStorage.setItem('server', '{{Server}}');
-		changeServer(document.getElementById('server-selector').value);
-	} else
-	{
-		document.getElementById('server-selector').value = localStorage.getItem('server');
-		changeServer(document.getElementById('server-selector').value, '{{Server}}');
-	}
+	changeServer(document.getElementById('server-selector').value);
 
 	calculElements();
 	addCopyClick();
