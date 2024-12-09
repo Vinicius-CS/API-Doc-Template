@@ -226,6 +226,7 @@ function onScroll()
 
 function changeServer(newValue, oldValue = localStorage.getItem('server'))
 {
+	document.querySelectorAll('.copy-icon, .tooltip').forEach(element => element.remove());
 	document.querySelectorAll('*:not(html ,body, select, option, .left-menu, .content-menu, .content-infos)').forEach(element =>
 	{
 		if (element.innerHTML.includes(oldValue))
